@@ -1,0 +1,63 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Xcode & Swift Package Manager
+.build/
+Packages
+xcuserdata/
+*.xcodeproj
+*.xcworkspace
+DerivedData/
+
+# Core ML compiled bundles & binary weights (hosted on Hugging Face Hub)
+*.mlmodelc
+*.mlmodelc/**
+models/**/*.bin
+models/**/weights/
+models/**/Data/
+
+# Standalone application build output
+PhysicalAIStudio.app/
+
+# Python & Temporary Tools
+__pycache__/
+*.pyc
+*.pyo
+scratch/
+test_*.py
+render_*.py
+make_*.py
+plot_*.py
+produce_*.py
+generate_*.py
+run_*.py
+upload_to_huggingface.py
+fix_readmes.py
+
+# Assets not part of core distribution
+assets/fluid_steps/
+assets/frames/
+assets/original_figures/
+assets/test_*
+assets/*.mp4
+assets/*_preview.png
+assets/*_frame.png
+assets/*_frame_preview.png
+assets/seaforth_*.png
+assets/apple_silicon_*.gif
+assets/authentic_navier_stokes_apple_silicon.gif
+assets/clouds.png
+assets/earth_nasa.jpg
+assets/starfield.jpg
+assets/hero_*.png
+assets/macbook_*.png
+assets/paraview_*.png
+assets/energy_and_speedup_benchmark.png
+*.vtk
+*.pvsm
+*.html

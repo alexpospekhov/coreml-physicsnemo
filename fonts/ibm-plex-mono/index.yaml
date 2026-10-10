@@ -1,0 +1,48 @@
+index: v2
+folder: Docs/DESIGN/BRANDBOOK_V1/fonts/ibm-plex-mono
+role: directory_index
+path_base: index_directory
+owner: Shared
+purpose: Документы, решения, спецификации
+entries:
+- path: IBMPlexMono-Bold.woff2
+  kind: file
+  owner: Shared
+  status: current
+- path: IBMPlexMono-Italic.woff2
+  kind: file
+  owner: Shared
+  status: current
+- path: IBMPlexMono-Medium.woff2
+  kind: file
+  owner: Shared
+  status: current
+- path: IBMPlexMono-Regular.woff2
+  kind: file
+  owner: Shared
+  status: current
+- path: OFL.txt
+  kind: file
+  owner: Shared
+  status: current
+- path: index.yaml
+  kind: file
+  owner: Shared
+  status: current
+filesystem:
+  coverage: immediate_children_with_explicit_boundaries
+  entries:
+  - path: IBMPlexMono-Bold.woff2
+    kind: file
+  - path: IBMPlexMono-Italic.woff2
+    kind: file
+  - path: IBMPlexMono-Medium.woff2
+    kind: file
+  - path: IBMPlexMono-Regular.woff2
+    kind: file
+  - path: OFL.txt
+    kind: file
+  - path: index.yaml
+    kind: file
+full_inventory: Catalog/Repository/index.yaml
+inventory_path_base: repository_root
