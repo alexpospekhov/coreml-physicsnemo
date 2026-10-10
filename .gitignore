@@ -38,6 +38,7 @@ generate_*.py
 run_*.py
 upload_to_huggingface.py
 fix_readmes.py
+README_HF.md
 
 # Assets not part of core distribution
 assets/fluid_steps/

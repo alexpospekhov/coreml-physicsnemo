@@ -17,6 +17,11 @@
 > [!NOTE]
 > **Developer Preview (v0.1.0-alpha)**: Experimental research port demonstrating that large-scale Physical AI neural operators can execute with primary hardware residency on the **Apple Neural Engine (ANE)**. All converted models originate from open checkpoints published under Apache 2.0 by NVIDIA ([PhysicsNeMo](https://github.com/NVIDIA/physicsnemo) and [Earth-2](https://github.com/NVIDIA/earth2studio)). Benchmarks empirically verified on an Apple M3 Max (Core ML 8, Swift 6).
 
+> [!TIP]
+> **Cross-Platform Repositories**:
+> - **Model Weights & Core ML Hub (2.10 GB)**: [Hugging Face: alexpospekhov/coreml-physicsnemo](https://huggingface.co/alexpospekhov/coreml-physicsnemo)
+> - **Source Code & macOS 120 FPS App**: [GitHub: alexpospekhov/coreml-physicsnemo](https://github.com/alexpospekhov/coreml-physicsnemo)
+
 **Maintainer & Port Author**: Alex Pospekhov  
 **License**: Apache License 2.0  
 **Target Hardware**: Apple Silicon Macs (M1/M2/M3/M4, Pro, Max, Ultra)  
@@ -27,7 +32,7 @@
 ## Executive Highlights
 
 - 🧠 **Unlocking the Apple Neural Engine for Physical AI**: While Apple's 16-Core NPU (38 TOPS) was designed primarily for vision and speech, physical PDE operators historically failed to run on it due to unsupported tensor primitives. By algebraically reformulating complex Fourier spectral convolutions and dynamic graph scatter into native Apple Machine Intermediate Language (MIL) representations, **all 8 foundation networks achieve up to 98.4% ANE execution with 0 CPU fallbacks**.
-- ⚡️ **Extreme Energy Efficiency (0.071 J / step at ~35W)**: Running physical simulations directly on the ANE consumes approximately $10\times$ less electrical energy per step than enterprise datacenter GPUs (A100 / RTX 4090), allowing sustained fluid mechanics and meteorological modeling on MacBook battery power without thermal throttling.
+- ⚡️ **Extreme Energy Efficiency (0.071 J / step for ANE aerodynamic solver to 10.8 J for global weather at ~35W SoC)**: Running physical simulations directly on the ANE consumes approximately $10\times$ less electrical energy per step than enterprise datacenter GPUs (A100 / RTX 4090), allowing sustained fluid mechanics and meteorological modeling on MacBook battery power without thermal throttling.
 - 🔬 **Real-Time 3D Aerodynamics (98.9 FPS on M3 Max)**: Transolver 9.8M evaluates 3D vehicle surface pressure fields ($C_p$) and skin friction in **10.11 ms**, unlocking real-time interactive aerodynamic feedback inside desktop CAD tools.
 - 🛠 **Developer-First Integration**: Single-line Swift Package Manager integration via root `Package.swift`, accompanied by a native 120 FPS macOS desktop studio (`NativeApp`) runnable via `swift run -c release`.
 
@@ -207,7 +212,7 @@ COREML-PHYSICSNEMO SUITE (v0.1.0-preview)
 ### Scientific Lineage & Dataset Provenance
 
 All converted models were trained on authoritative, open scientific datasets:
-- **Atmospheric Physics (Earth-2)**: Trained on the European Centre for Medium-Range Weather Forecasts (**ECMWF ERA5**) reanalysis dataset spanning 1979–2020 at $0.25^\circ$ spherical grid resolution ($721 \times 1440$ latitude/longitude, $\approx 28\,\text{km}$ at the equator). The state vector comprises 73 prognostic channels (5 surface variables + 4 atmospheric variables $[u, v, T, z]$ across 17 pressure levels from 1000 hPa to 10 hPa) with a 6-hour autoregressive forecast step.
+- **Atmospheric Physics (Earth-2)**: Trained on the European Centre for Medium-Range Weather Forecasts (**ECMWF ERA5**) reanalysis dataset spanning 1979–2020 at $0.25^\circ$ spherical grid resolution ($721 \times 1440$ latitude/longitude, $\approx 28\,\text{km}$ at the equator). While complete ERA5 states span 73 channels, this converted Core ML release runs the 26-variable core atmospheric dynamics backbone ($[1, 26, 720, 1440]$) covering zonal/meridional wind, geopotential height, and temperature across primary tropospheric levels with a 6-hour autoregressive forecast step.
 - **Automotive Aerodynamics (PhysicsNeMo)**: Trained on the **DrivAerNet / DrivAerML** benchmark dataset (Technical University of Munich, Audi AG, BMW Group), comprising high-fidelity OpenFOAM and Star-CCM+ steady-state RANS ($k-\omega$ SST) and Detached Eddy Simulations (DES) across notchback, fastback, and estate passenger car geometries at $Re \approx 4.87 \times 10^6$ ($v_\infty = 30\,\text{m/s}$). Models predict 3D surface pressure coefficient fields ($C_p$), wall shear stress distributions ($\tau_w$), total aerodynamic drag ($C_d$), and volumetric wake velocity vectors.
 
 ---
